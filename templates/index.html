@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heart Disease Prediction</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+<div class="card">
+<h1>Heart Disease Prediction</h1>
+<p class="subtitle">Enter patient medical details</p>
+<form action="/predict" method="post" class="form-grid">
+<input type="number" name="age" placeholder="Age" required>
+<input type="number" name="sex" placeholder="Sex (0 Female / 1 Male)" required>
+<input type="number" name="cp" placeholder="Chest Pain Type" required>
+<input type="number" name="trestbps" placeholder="Resting BP" required>
+<input type="number" name="chol" placeholder="Cholesterol" required>
+<input type="number" name="fbs" placeholder="Fasting Blood Sugar" required>
+<input type="number" name="restecg" placeholder="Rest ECG" required>
+<input type="number" name="thalach" placeholder="Max Heart Rate" required>
+<input type="number" name="exang" placeholder="Exercise Angina" required>
+<input type="number" step="any" name="oldpeak" placeholder="Oldpeak" required>
+<input type="number" name="slope" placeholder="Slope" required>
+<input type="number" name="ca" placeholder="Major Vessels" required>
+<input type="number" name="thal" placeholder="Thalassemia" required>
+<button type="submit">Predict Risk</button>
+</form>
+</div>
+</div>
+</body>
+</html>

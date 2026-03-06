@@ -1,0 +1,17 @@
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+body{background:linear-gradient(135deg,#1e3c72,#2a5298);min-height:100vh;display:flex;align-items:center;justify-content:center;}
+.container{width:100%;display:flex;justify-content:center;padding:20px;}
+.card{background:white;padding:50px 40px;border-radius:15px;max-width:700px;width:100%;box-shadow:0 15px 40px rgba(0,0,0,0.2);text-align:center;}
+h1{font-size:28px;margin-bottom:8px;color:#1e3c72;}
+.subtitle{font-size:16px;color:#555;margin-bottom:30px;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:20px;}
+input{padding:12px;border:1px solid #ccc;border-radius:8px;font-size:14px;transition:0.3s;}
+input:focus{border-color:#1e3c72;outline:none;box-shadow:0 0 5px rgba(30,60,114,0.5);}
+button{grid-column:span 2;padding:15px;background:#1e3c72;color:white;border:none;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;transition:0.3s;}
+button:hover{background:#163a5c;transform:scale(1.03);}
+.result-meter{padding:25px;border-radius:10px;margin:25px 0;font-size:20px;font-weight:bold;}
+.result-meter.safe{background:#d4edda;color:#155724;}
+.result-meter.medium{background:#fff3cd;color:#856404;}
+.result-meter.danger{background:#f8d7da;color:#721c24;}
+.btn-back{display:inline-block;margin-top:20px;padding:12px 25px;background:#1e3c72;color:white;text-decoration:none;border-radius:8px;font-weight:bold;transition:0.3s;}
+.btn-back:hover{background:#163a5c;transform:scale(1.05);}
