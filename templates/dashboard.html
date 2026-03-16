@@ -5,57 +5,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Prediction Dashboard</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-<div class="container">
-<div class="card">
+<div class="container result-card">
+<h1>Heart Disease Risk Prediction</h1>
 
-<h1>Prediction Dashboard</h1>
-
-<div class="result-meter 
-{% if 'High' in data['prediction'] %}
-danger
-{% elif 'Medium' in data['prediction'] %}
-medium
-{% else %}
-safe
-{% endif %}">
-<p class="result-text">{{ data['prediction'] }}</p>
+<!-- Probability Bar -->
+<div class="prob-bar">
+<div class="prob-fill 
+{% if 'High' in data['prediction'] %}high
+{% elif 'Medium' in data['prediction'] %}medium
+{% else %}low
+{% endif %}" 
+style="width:{{ data['probability'] }}%"></div>
 </div>
 
-<canvas id="vitalsChart" width="400" height="200"></canvas>
+<p style="text-align:center; margin-bottom:20px;">
+<strong>{{ data['prediction'] }}</strong> ({{ data['probability'] }}%)
+</p>
+
+<!-- Patient Data Table -->
+<table>
+<tr><td><strong>Age:</strong></td><td>{{ data['age'] }}</td></tr>
+<tr><td><strong>Sex:</strong></td><td>{{ data['sex'] }}</td></tr>
+<tr><td><strong>Chest Pain:</strong></td><td>{{ data['cp'] }}</td></tr>
+<tr><td><strong>Rest BP:</strong></td><td>{{ data['trestbps'] }}</td></tr>
+<tr><td><strong>Cholesterol:</strong></td><td>{{ data['chol'] }}</td></tr>
+<tr><td><strong>Fasting Sugar:</strong></td><td>{{ data['fbs'] }}</td></tr>
+<tr><td><strong>Rest ECG:</strong></td><td>{{ data['restecg'] }}</td></tr>
+<tr><td><strong>Max Heart Rate:</strong></td><td>{{ data['thalach'] }}</td></tr>
+<tr><td><strong>Exercise Angina:</strong></td><td>{{ data['exang'] }}</td></tr>
+<tr><td><strong>Oldpeak:</strong></td><td>{{ data['oldpeak'] }}</td></tr>
+<tr><td><strong>Slope:</strong></td><td>{{ data['slope'] }}</td></tr>
+<tr><td><strong>Vessels:</strong></td><td>{{ data['ca'] }}</td></tr>
+<tr><td><strong>Thal:</strong></td><td>{{ data['thal'] }}</td></tr>
+</table>
 
 <a href="/" class="btn-back">Predict Another Patient</a>
-
-<script>
-const ctx = document.getElementById('vitalsChart').getContext('2d');
-const vitalsChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Resting BP', 'Cholesterol', 'Max Heart Rate', 'Oldpeak'],
-        datasets: [{
-            label: 'Patient Vitals',
-            data: [
-                {{ data['trestbps'] }},
-                {{ data['chol'] }},
-                {{ data['thalach'] }},
-                {{ data['oldpeak'] }}
-            ],
-            backgroundColor: ['#1e3c72','#2a5298','#1e3c72','#2a5298']
-        }]
-    },
-    options: {
-        responsive: true,
-        scales: {
-            y: { beginAtZero: true }
-        }
-    }
-});
-</script>
-
 </div>
-</div>
+
 </body>
 </html>

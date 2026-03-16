@@ -1,17 +1,158 @@
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
-body{background:linear-gradient(135deg,#1e3c72,#2a5298);min-height:100vh;display:flex;align-items:center;justify-content:center;}
-.container{width:100%;display:flex;justify-content:center;padding:20px;}
-.card{background:white;padding:50px 40px;border-radius:15px;max-width:700px;width:100%;box-shadow:0 15px 40px rgba(0,0,0,0.2);text-align:center;}
-h1{font-size:28px;margin-bottom:8px;color:#1e3c72;}
-.subtitle{font-size:16px;color:#555;margin-bottom:30px;}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:20px;}
-input{padding:12px;border:1px solid #ccc;border-radius:8px;font-size:14px;transition:0.3s;}
-input:focus{border-color:#1e3c72;outline:none;box-shadow:0 0 5px rgba(30,60,114,0.5);}
-button{grid-column:span 2;padding:15px;background:#1e3c72;color:white;border:none;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;transition:0.3s;}
-button:hover{background:#163a5c;transform:scale(1.03);}
-.result-meter{padding:25px;border-radius:10px;margin:25px 0;font-size:20px;font-weight:bold;}
-.result-meter.safe{background:#d4edda;color:#155724;}
-.result-meter.medium{background:#fff3cd;color:#856404;}
-.result-meter.danger{background:#f8d7da;color:#721c24;}
-.btn-back{display:inline-block;margin-top:20px;padding:12px 25px;background:#1e3c72;color:white;text-decoration:none;border-radius:8px;font-weight:bold;transition:0.3s;}
-.btn-back:hover{background:#163a5c;transform:scale(1.05);}
+/* ===== Reset & Base ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* ===== Body & Background ===== */
+body {
+    background: #f0f4f8; /* Light gray background */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* ===== Container & Card ===== */
+.container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card, .result-card {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 20px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card:hover, .result-card:hover {
+    transform: translateY(-5px);
+}
+
+/* ===== Headings ===== */
+h1 {
+    font-size: 32px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #7f8c8d;
+    margin-bottom: 25px;
+}
+
+/* ===== Form Grid ===== */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+input, select {
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: all 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #2980b9;
+    box-shadow: 0 0 8px rgba(41, 128, 185, 0.3);
+    outline: none;
+}
+
+/* ===== Buttons ===== */
+button, .btn-back {
+    grid-column: span 2;
+    padding: 16px;
+    background: #2980b9;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button:hover, .btn-back:hover {
+    background: #1c5980;
+    transform: scale(1.05);
+}
+
+/* ===== Probability Bar ===== */
+.prob-bar {
+    width: 100%;
+    height: 28px;
+    background: #ecf0f1;
+    border-radius: 14px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.prob-fill {
+    height: 100%;
+    border-radius: 14px;
+    transition: width 0.5s ease-in-out;
+}
+
+.low { background: #27ae60; }     /* Green for Low Risk */
+.medium { background: #f1c40f; }  /* Yellow for Medium Risk */
+.high { background: #e74c3c; }    /* Red for High Risk */
+
+/* ===== Result Meter ===== */
+.result-meter {
+    padding: 22px;
+    border-radius: 15px;
+    margin: 25px 0;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.result-meter.safe { background: #dff9e2; color: #27ae60; }
+.result-meter.medium { background: #fff7d6; color: #f1c40f; }
+.result-meter.danger { background: #fde2e0; color: #e74c3c; }
+
+/* ===== Patient Data Table ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+/* ===== Responsive ===== */
+@media(max-width:768px){
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card, .result-card {
+        padding: 25px 20px;
+    }
+}

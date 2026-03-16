@@ -1,11 +1,12 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request
 import joblib
 import numpy as np
-import pdfkit
-import os
 
 app = Flask(__name__)
+
+# Load model & scaler
 model = joblib.load("models/heart_model.pkl")
+scaler = joblib.load("models/scaler.pkl")
 
 @app.route("/")
 def home():
@@ -13,10 +14,27 @@ def home():
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    values = [float(x) for x in request.form.values()]
-    final = np.array(values).reshape(1, -1)
+    # Collect form data
+    values = [
+        float(request.form["age"]),
+        int(request.form["sex"]),
+        int(request.form["cp"]),
+        float(request.form["trestbps"]),
+        float(request.form["chol"]),
+        int(request.form["fbs"]),
+        int(request.form["restecg"]),
+        float(request.form["thalach"]),
+        int(request.form["exang"]),
+        float(request.form["oldpeak"]),
+        int(request.form["slope"]),
+        int(request.form["ca"]),
+        int(request.form["thal"])
+    ]
 
-    prob = model.predict_proba(final)[0][1] * 100
+    X = np.array(values).reshape(1, -1)
+    X_scaled = scaler.transform(X)
+    prob = model.predict_proba(X_scaled)[0][1] * 100
+
     if prob >= 70:
         risk = "High Risk"
     elif prob >= 40:
@@ -24,10 +42,7 @@ def predict():
     else:
         risk = "Low Risk"
 
-    prediction_text = f"{risk} ({prob:.1f}%)"
-
-    # Pass values and prediction to dashboard
-    patient_data = {
+    data = {
         "age": values[0],
         "sex": values[1],
         "cp": values[2],
@@ -41,18 +56,11 @@ def predict():
         "slope": values[10],
         "ca": values[11],
         "thal": values[12],
-        "prediction": prediction_text
+        "prediction": risk,
+        "probability": round(prob, 1)
     }
 
-    return render_template("dashboard.html", data=patient_data)
-
-@app.route("/download_report")
-def download_report():
-    patient_data = request.args.to_dict()
-    html = render_template("report_template.html", data=patient_data)
-    pdf_path = "static/patient_report.pdf"
-    pdfkit.from_string(html, pdf_path)
-    return send_file(pdf_path, as_attachment=True)
+    return render_template("dashboard.html", data=data)
 
 if __name__ == "__main__":
     app.run(debug=True)
