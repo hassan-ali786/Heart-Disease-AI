@@ -1,4 +1,4 @@
-# Heart Disease Prediction Dashboard
+# Heart Disease Prediction 
 
 A professional Heart Disease Prediction Web Application built using Python, Flask, and Machine Learning.
 
@@ -25,7 +25,7 @@ This project predicts the risk of heart disease based on patient medical data an
 ## Project Structure
 
 ```
-HeartDiseaseDashboard/
+HeartDiseaseAI/
 │
 ├── dataset/
 │   └── heart.csv
@@ -49,7 +49,7 @@ HeartDiseaseDashboard/
 ### 1. Clone Repository
 
 ```
-git clone <your-repo-link>
+git clone <https://github.com/hassan-ali786/Heart-Disease-AI.git>
 cd HeartDiseaseDashboard
 ```
 
