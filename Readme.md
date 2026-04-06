@@ -1,24 +1,35 @@
-# Heart Disease Prediction 
+# Heart Disease Prediction System
 
-A professional Heart Disease Prediction Web Application built using Python, Flask, and Machine Learning.
+A production-ready web application that predicts the likelihood of heart disease using Machine Learning and presents results through a structured and user-friendly dashboard.
 
-This project predicts the risk of heart disease based on patient medical data and presents results in a clean, modern dashboard.
+This project is suitable for data science portfolios, machine learning demonstrations, and healthcare analytics prototypes.
 
 ---
 
-## Features
+## Tech Stack
 
-* Predict heart disease risk using Random Forest Classifier
-* Displays risk probability (%)
-* Color-coded risk indicator:
+![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python)
+![Flask](https://img.shields.io/badge/Flask-Web_Framework-black?logo=flask)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-Machine_Learning-orange?logo=scikit-learn)
+![Pandas](https://img.shields.io/badge/Pandas-Data_Analysis-purple?logo=pandas)
+![NumPy](https://img.shields.io/badge/NumPy-Numerical_Computing-blue?logo=numpy)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-Visualization-green)
+![HTML5](https://img.shields.io/badge/HTML5-Frontend-orange?logo=html5)
+![CSS3](https://img.shields.io/badge/CSS3-Styling-blue?logo=css3)
 
-  * Low Risk
-  * Medium Risk
-  * High Risk
-* Interactive patient vitals chart
-* Clean and responsive UI dashboard
-* PDF report download (optional)
-* Fully portfolio-ready project
+---
+
+## Key Features
+
+- Machine Learning-based heart disease prediction using Random Forest Classifier  
+- Risk probability displayed as a percentage  
+- Categorized risk levels:
+  - Low Risk  
+  - Medium Risk  
+  - High Risk  
+- Interactive dashboard for patient vitals visualization  
+- Optional PDF report generation  
+- Clean and responsive user interface  
 
 ---
 
@@ -46,16 +57,16 @@ HeartDiseaseAI/
 
 ## Installation
 
-### 1. Clone Repository
+### 1. Clone the Repository
 
-```
-git clone <https://github.com/hassan-ali786/Heart-Disease-AI.git>
+```bash
+git clone https://github.com/hassan-ali786/Heart-Disease-AI.git
 cd HeartDiseaseDashboard
 ```
 
 ### 2. Install Dependencies
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
@@ -63,19 +74,19 @@ pip install -r requirements.txt
 
 ## Usage
 
-### Step 1: Train Model
+### Step 1: Train the Model
 
-```
+```bash
 python train_model.py
 ```
 
-### Step 2: Run Application
+### Step 2: Run the Application
 
-```
+```bash
 python app.py
 ```
 
-### Step 3: Open in Browser
+### Step 3: Access the Application
 
 ```
 http://127.0.0.1:5000/
@@ -85,40 +96,37 @@ http://127.0.0.1:5000/
 
 ## Example Input
 
-Use this sample data for testing:
-
-```
-Age: 52
-BP: 130
-Cholesterol: 250
-Max Heart Rate: 150
-Oldpeak: 1.5
-```
+| Parameter        | Value |
+|-----------------|------|
+| Age             | 52   |
+| Blood Pressure  | 130  |
+| Cholesterol     | 250  |
+| Max Heart Rate  | 150  |
+| Oldpeak         | 1.5  |
 
 ---
 
 ## How It Works
 
-1. User enters medical details
-2. Data is sent to Flask backend
-3. Model predicts heart disease risk
-4. Result is displayed with:
-
-   * Risk percentage
-   * Risk level
-   * Chart visualization
+1. User inputs medical data through the web interface  
+2. Data is sent to the Flask backend  
+3. The trained model processes the input  
+4. The system returns:
+   - Risk percentage  
+   - Risk category  
+   - Visual representation of patient metrics  
 
 ---
 
-## Machine Learning
+## Machine Learning Details
 
-* Algorithm: Random Forest Classifier
-* Dataset: Heart Disease Dataset (CSV)
-* Libraries:
-
-  * scikit-learn
-  * pandas
-  * numpy
+- Algorithm: Random Forest Classifier  
+- Dataset: Heart Disease Dataset (CSV format)  
+- Workflow:
+  - Data preprocessing  
+  - Feature selection  
+  - Model training  
+  - Model serialization using `.pkl`  
 
 ---
 
@@ -130,61 +138,61 @@ pandas
 numpy
 scikit-learn
 matplotlib
-pdfkit (optional)
+pdfkit
 ```
 
 ---
 
 ## Notes
 
-* Ensure dataset is inside dataset/ folder
-* Model file will be saved in models/
-* Python 3.8+ recommended
-* If PDF not working, install wkhtmltopdf
+- Ensure the dataset is placed inside the `dataset/` directory  
+- The trained model will be saved in the `models/` directory  
+- Python 3.8 or higher is recommended  
+- For PDF functionality, install `wkhtmltopdf`  
 
 ---
 
-## Screenshots (Optional)
+## Screenshots
 
-Add your UI screenshots here for better presentation.
+Add application screenshots here to enhance presentation.
 
 ---
 
 ## Use Cases
 
-* Medical prediction demo project
-* Portfolio project for Data Science or Machine Learning roles
-* Learning Flask with Machine Learning integration
+- Data Science portfolio project  
+- Machine Learning demonstration  
+- Healthcare analytics prototype  
+- Flask and Machine Learning integration example  
 
 ---
 
 ## Contributing
 
-Feel free to fork this repo and improve the project.
+Contributions are welcome. To contribute:
+
+1. Fork the repository  
+2. Create a new branch  
+3. Submit a pull request  
 
 ---
 
 ## License
 
-This project is open-source and free to use.
-
----
-
-## Support
-
-If you like this project:
-
-* Give it a star on GitHub
-* Share on LinkedIn
+This project is open-source and available under the MIT License.
 
 ---
 
 ## Author
 
-Hassan Ali
-Data Science and Machine Learning Enthusiast
+Hassan Ali  
+Data Science and Machine Learning Enthusiast  
 
 ---
 
-Built using Python and Machine Learning
+## Future Improvements
 
+- Deployment on cloud platforms such as AWS, Render, or Heroku  
+- User authentication system  
+- Integration of advanced models such as XGBoost  
+- Real-time health data integration  
